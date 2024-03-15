@@ -10,6 +10,10 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-local plugins = {}
-local opts = {}
-require("lazy").setup(plugins, opts)
+local opts = {
+     install = {
+          -- try to load one of these colorschemes when starting an installation during startup
+          colorscheme = { "tokyonight-storm" },
+     },
+}
+require("lazy").setup("plugins", opts)

@@ -46,7 +46,7 @@ vim.keymap.set({ "n", "i", "v" }, "<Up>", "<Nop>")
 vim.keymap.set({ "n", "i", "v" }, "<Down>", "<Nop>")
 
 vim.keymap.set("n", "<Tab>", "<cmd>bNext<CR>", { silent = true })
-vim.keymap.set("n", "<leader>bc", "<cmd>bd>CR>")
+vim.keymap.set("n", "<leader>bc", "<cmd>bd<CR>")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

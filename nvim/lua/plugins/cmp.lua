@@ -9,14 +9,19 @@ return{
             "saadparwaiz1/cmp_luasnip",
             dependencies = {
                 "L3MON4D3/LuaSnip",
-                dependencies = { 
-                    "rafamadriz/friendly-snippets",
-                },
             },
         },
     },
     config = function()
-        require("luasnip.loaders.from_vscode").lazy_load()
+        require("luasnip").config.set_config({
+            enable_autosnippets = true,
+        })
+        require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/LuaSnip"})
+        local auto_expand = require("luasnip").expand_auto
+        require("luasnip").expand_auto = function(...)
+            vim.o.undolevels = vim.o.undolevels
+            auto_expand(...)
+        end
         local has_words_before = function()
             unpack = unpack or table.unpack
             local line, col = unpack(vim.api.nvim_win_get_cursor(0))

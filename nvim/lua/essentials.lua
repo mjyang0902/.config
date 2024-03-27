@@ -72,3 +72,4 @@ vim.keymap.set("n", "<leader>wq", ":wq", { silent = true })
 vim.keymap.set("n", "<leader>w!", ":w!", { silent = true })
 vim.keymap.set("n", "<leader>q!", ":q!", { silent = true })
 vim.keymap.set("n", "<leader>wq!", ":wq!", { silent = true })
+

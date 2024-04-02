@@ -73,6 +73,12 @@ return{
                     end
                 end, { "i", "s" }),
                 ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+
+                ["<leader><leader>"] = cmp.mapping(function(fallback)
+                    if cmp.visible() then
+                        cmp.close()
+                    end 
+                end, { "i", "s" }),
             },
             experimental = {
                 ghost_text = true,

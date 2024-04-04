@@ -78,6 +78,39 @@ return {
         },
         config = function()
             require("neo-tree").setup({
+                source_selector = {
+                    winbar = true, -- toggle to show selector on winbar
+                    statusline = false, -- toggle to show selector on statusline
+                    show_scrolled_off_parent_node = false,                    -- boolean
+                    sources = {                                               -- table
+                        {
+                            source = "filesystem",                                -- string
+                            display_name = "   󰉓 Files "                            -- string | nil
+                        },
+                        {
+                            source = "buffers",                                   -- string
+                            display_name = " 󰈚 Buffers "                          -- string | nil
+                        },
+                        {
+                            source = "git_status",                                -- string
+                            display_name = " 󰊢 Git "                              -- string | nil
+                        },
+                    },
+                    content_layout = "center",                                 -- string
+                    tabs_layout = "equal",                                    -- string
+                    truncation_character = "…",                               -- string
+                    tabs_min_width = nil,                                     -- int | nil
+                    tabs_max_width = nil,                                     -- int | nil
+                    padding = 0,                                              -- int | { left: int, right: int }
+                    separator = { left = "▏", right= "▕" },                   -- string | { left: string, right: string, override: string | nil }
+                    separator_active = nil,                                   -- string | { left: string, right: string, override: string | nil } | nil
+                    show_separator_on_edge = false,                           -- boolean
+                    highlight_tab = "NeoTreeCursorLine",                     -- string
+                    highlight_tab_active = "NeoTreeGitDeleted",                -- string
+                    highlight_background = "NeoTreeCursorLine",              -- string
+                    highlight_separator = "NeoTreeCursorLine",      -- string
+                    highlight_separator_active = "NeoTreeTabSeparatorActive", -- string
+                },
                 event_handlers = {
                     {
                         event = "after_render",
@@ -92,7 +125,7 @@ return {
                             end
                         end,
                     },
-                }
+                },
             })
             vim.keymap.set({"n", "v"},"<leader>e",[[<cmd>Neotree toggle<CR>]])
         end
@@ -111,6 +144,7 @@ return {
                             filetype = "neo-tree",
                             raw = " %{%v:lua.__get_selector()%} ",
                             highlight = { sep = { link = "WinSeparator" } },
+                            --                        separator = "┃",
                             text = "File Explorer"
                         },
                     },

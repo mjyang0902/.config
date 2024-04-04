@@ -127,7 +127,7 @@ return {
                     highlight_tab_active = "NeoTreeGitDeleted",                -- string
                     highlight_background = "NeoTreeCursorLine",              -- string
                     highlight_separator = "NeoTreeCursorLine",      -- string
-                    highlight_separator_active = "NeoTreeTabSeparatorActive", -- string
+                    highlight_separator_active = "NeoTreeGitAdded", -- string
                 },
                 event_handlers = {
                     {

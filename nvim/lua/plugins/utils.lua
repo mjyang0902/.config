@@ -81,8 +81,8 @@ return {
     },
     {
         "ellisonleao/glow.nvim",
-        event = "VeryLazy",
         config = true,
+        cmd = "Glow",
     },
     {
         "nvim-neo-tree/neo-tree.nvim",

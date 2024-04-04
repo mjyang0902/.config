@@ -1,5 +1,6 @@
 return {
     "lervag/vimtex",
+    ft = 'tex',
     dependencies = {
         "KeitaNakamura/tex-conceal.vim",
     },

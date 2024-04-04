@@ -1,13 +1,14 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    event = "VeryLazy",
     dependencies = {
         "nvim-treesitter/playground",
         "nvim-treesitter/nvim-treesitter-textobjects",
     },
     main = "nvim-treesitter.configs",
-    build = ":TSUpdate", 
+    build = ":TSUpdate",
     opts = {
-        ensure_installed = "all", 
+        ensure_installed = "all",
         highlight = {
             enable = true,
             disable = { "latex" },

@@ -16,7 +16,7 @@ return {
     },
     {
         "windwp/nvim-autopairs",
-        event = "VeryLazy",
+        event = "InsertEnter",
         config = true,
         opts = {
             enable_check_bracket_line = false,
@@ -28,60 +28,44 @@ return {
     },
     {
         "folke/flash.nvim",
-        keys = {
-            {
-                "s",
-                mode = { "n", "x", "o" },
+        config = function()
+            require("flash").setup()
+            vim.keymap.set({"n","x","o"},"s",
                 function()
-                    require("flash").jump()
-                end,
-                desc = "Flash",
-            },
-            {
-                "S",
-                mode = { "n", "o", "x" },
+                    require("flash").jump({
+                        search = {
+                            mode = function(str)
+                                return "\\<" .. str
+                            end,
+                        },
+                    })
+                end
+            )
+            vim.keymap.set({"n","x","o"},"S",
                 function()
                     require("flash").treesitter()
-                end,
-                desc = "Flash Treesitter",
-            },
-            {
-                "r",
-                mode = "o",
+                end
+            )
+            vim.keymap.set({"o"},"r",
                 function()
                     require("flash").remote()
-                end,
-                desc = "Remote Flash",
-            },
-            {
-                "R",
-                mode = { "o", "x" },
+                end
+            )
+            vim.keymap.set({"o","x"},"R",
                 function()
                     require("flash").treesitter_search()
-                end,
-                desc = "Flash Treesitter Search",
-            },
-            {
-                "<c-s>",
-                mode = { "c" },
-                function()
-                    require("flash").toggle()
-                end,
-                desc = "Toggle Flash Search",
-            },
-        },
-        config = true
+                end
+            )
+        end,
     },
     {
         "kamykn/spelunker.vim",
-        event = "VeryLazy",
         config = function()
             vim.g.spelunker_check_type = 2
         end
     },
     {
         "ellisonleao/glow.nvim",
-        event = "VeryLazy",
         config = true,
     },
     {
@@ -91,10 +75,7 @@ return {
             "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
             "MunifTanjim/nui.nvim",
         },
-        keys = {
-            { "<leader>e", "<cmd>Neotree toggle<CR>", desc = "Open the neo-tree", mode = { "n", "v" } }
-        },
-        config = function ()
+        config = function()
             require("neo-tree").setup({
                 source_selector = {
                     winbar = true, -- toggle to show selector on winbar
@@ -145,6 +126,7 @@ return {
                     },
                 },
             })
+            vim.keymap.set({"n", "v"},"<leader>e",[[<cmd>Neotree toggle<CR>]])
         end
     },
     {
@@ -175,37 +157,34 @@ return {
     },
     {
         "folke/which-key.nvim",
-        event = "VeryLazy",
         config = true,
     },
     {
         'echasnovski/mini.ai',
-        event = "VeryLazy",
         config = true,
     },
     {
         "echasnovski/mini.comment",
-        event = "VeryLazy",
         config = true,
     },
     {
         "s1n7ax/nvim-window-picker",
-        opts = {
-            filter_rules = {
-                include_current_win = true,
-                bo = {
-                    filetype = { "fidget", "neo-tree" }
+        config = function()
+            require("window-picker").setup({
+                filter_rules = {
+                    include_current_win = true,
+                    bo = {
+                        filetype = { "fidget", "neo-tree" }
+                    }
                 }
-            }
-        },
-        keys = {
-            {
+            })
+            vim.keymap.set("n",
                 "<c-w>p",
                 function()
                     local window_number = require('window-picker').pick_window()
                     if window_number then vim.api.nvim_set_current_win(window_number) end
-                end,
-            }
-        }
+                end
+            )
+        end
     },
 }

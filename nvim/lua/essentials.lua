@@ -52,8 +52,15 @@ vim.keymap.set("i", "<C-k>", "<Up>")
 
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
-vim.keymap.set("n", "<C-j>", "<C-j>")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
+
+vim.keymap.set("t", "<C-h>", "<C-w>h")
+vim.keymap.set("t", "<C-l>", "<C-w>l")
+vim.keymap.set("t", "<C-j>", "<C-w>j")
+vim.keymap.set("t", "<C-k>", "<C-w>k")
+
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]])
 
 vim.keymap.set("n", "<CR>", "a<CR><Esc>k$")
 

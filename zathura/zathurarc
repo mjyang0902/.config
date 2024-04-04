@@ -1,0 +1,4 @@
+set window-height 1032
+set window-width 640
+set synctex true
+set synctex-editor-command "nvr --remote-silent +%{line} %{input}"

@@ -150,12 +150,14 @@ return {
     {
         "akinsho/bufferline.nvim",
         event = "VeryLazy",
+        after = "catppuccin",
         config = function()
             _G.__cached_neo_tree_selector = nil
             _G.__get_selector = function()
                 return _G.__cached_neo_tree_selector
             end
             require("bufferline").setup({
+                highlights = require("catppuccin.groups.integrations.bufferline").get(),
                 options = {
                     offsets = {
                         {

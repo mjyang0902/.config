@@ -64,7 +64,13 @@ return {
         end
         require("neoconf").setup()
         require("neodev").setup()
-        require("fidget").setup()
+        require("fidget").setup({
+            notification = {
+                window = {
+                    winblend = 0,
+                },
+            }
+        })
         require("lspsaga").setup()
         require("mason").setup()
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
